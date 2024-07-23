@@ -1,0 +1,22 @@
+.button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+
+  & > span {
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
+
+.primaryButton {
+  background-color: #0D8112;
+  color: #ffffff;
+}
+
+.secondaryButton {
+  background-color: #ffffff;
+  color: #0D8112;
+  border: 1px solid #0D8112;
+}

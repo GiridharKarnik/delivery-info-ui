@@ -1,0 +1,13 @@
+.freeGiftSticker {
+  width: fit-content;
+  background-color: #FFB8EF;
+  border: 1px solid #E7AADA;
+  padding: 5px 10px;
+
+  & > span {
+    font-size: 14px;
+    font-weight: bold;
+    color: #773E75;
+    text-transform: uppercase;
+  }
+}
