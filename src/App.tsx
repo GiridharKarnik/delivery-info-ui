@@ -40,6 +40,8 @@ function App() {
           totalPrice={deliveryInfo.totalPrice}
           freeGift={deliveryInfo.freeGift}
           promoImageUrl="/img.png"
+          viewDetails={() => {}}
+          editDelivery={() => {}}
         />
       )}
     </div>

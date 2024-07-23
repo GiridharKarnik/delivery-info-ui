@@ -12,6 +12,8 @@ interface DeliveryCardProps {
   totalPrice: string;
   freeGift: boolean;
   promoImageUrl: string;
+  viewDetails: () => void;
+  editDelivery: () => void;
 }
 
 export const DeliveryCard: FC<DeliveryCardProps> = ({
@@ -20,6 +22,8 @@ export const DeliveryCard: FC<DeliveryCardProps> = ({
   totalPrice,
   freeGift,
   promoImageUrl,
+  viewDetails,
+  editDelivery,
 }) => {
   const deviceType = useDeviceType();
 
@@ -44,10 +48,10 @@ export const DeliveryCard: FC<DeliveryCardProps> = ({
         <p className={styles.deliveryMessage}>{message}</p>
         <p className={styles.totalPrice}>Total Price {totalPrice}</p>
         <div className={styles.userActions}>
-          <Button onClick={() => {}} type={ButtonType.Primary}>
+          <Button onClick={viewDetails} type={ButtonType.Primary}>
             View details
           </Button>
-          <Button onClick={() => {}} type={ButtonType.Secondary}>
+          <Button onClick={editDelivery} type={ButtonType.Secondary}>
             Edit delivery
           </Button>
         </div>
