@@ -11,6 +11,10 @@ function App() {
   );
 
   const fetchDeliveryInfo = async (userId: string) => {
+    if (userId.trim() === '') {
+      return;
+    }
+
     try {
       const deliveryInfo = await fetchNextDeliveryInfo(userId);
       setDeliveryInfo(deliveryInfo);
