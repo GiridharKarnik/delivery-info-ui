@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { Button } from '../Button/Button';
 import { ButtonType } from '../../types.ts';
 import { FreeGiftSticker } from '../FreeGiftSticker/FreeGiftSticker.tsx';
+import { useDeviceType } from '../../hooks/useDeviceType.ts';
 
 import styles from './DeliveryCard.module.scss';
 
@@ -20,6 +21,8 @@ export const DeliveryCard: FC<DeliveryCardProps> = ({
   freeGift,
   promoImageUrl,
 }) => {
+  useDeviceType();
+
   return (
     <div className={styles.deliveryCard}>
       <div className={styles.promoImageContainer}>
