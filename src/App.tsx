@@ -1,16 +1,22 @@
-import { useState } from 'react';
-import styles from './App.module.scss';
 import { DeliveryCard } from './components/DeliveryCard/DeliveryCard.tsx';
+import styles from './App.module.scss';
+import { useState } from 'react';
+import { fetchNextDeliveryInfo } from './data/fetchNextDeliveryInfo.ts';
+import { NextDeliveryComms } from './types.ts';
 
 function App() {
   const [userId, setUserId] = useState<string>('');
+  const [deliveryInfo, setDeliveryInfo] = useState<NextDeliveryComms | null>(
+    null
+  );
 
-  const deliveryMessage = {
-    title: 'Your next delivery for Maymie and Murphy',
-    message:
-      "Hey Tyra! In two days' time, we'll be charging you for your next order for Maymie and Murphy's fresh food.",
-    totalPrice: '£71.25',
-    freeGift: false,
+  const fetchDeliveryInfo = async (userId: string) => {
+    try {
+      const deliveryInfo = await fetchNextDeliveryInfo(userId);
+      setDeliveryInfo(deliveryInfo);
+    } catch (error) {
+      console.error('Error fetching delivery info:', error);
+    }
   };
 
   return (
@@ -20,15 +26,22 @@ function App() {
         placeholder="Enter user id"
         value={userId}
         onChange={(e) => setUserId(e.target.value)}
+        onBlur={() => {
+          fetchDeliveryInfo(userId);
+        }}
       />
 
-      <DeliveryCard
-        title={deliveryMessage.title}
-        message={deliveryMessage.message}
-        totalPrice={deliveryMessage.totalPrice}
-        freeGift={deliveryMessage.freeGift}
-        promoImageUrl="/img.png"
-      />
+      {!deliveryInfo ? (
+        <p>No delivery information</p>
+      ) : (
+        <DeliveryCard
+          title={deliveryInfo.title}
+          message={deliveryInfo.message}
+          totalPrice={deliveryInfo.totalPrice}
+          freeGift={deliveryInfo.freeGift}
+          promoImageUrl="/img.png"
+        />
+      )}
     </div>
   );
 }
