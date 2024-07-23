@@ -21,10 +21,16 @@ export const DeliveryCard: FC<DeliveryCardProps> = ({
   freeGift,
   promoImageUrl,
 }) => {
-  useDeviceType();
+  const deviceType = useDeviceType();
+
+  const containerStyles = `${styles.deliveryCard} ${
+    deviceType === 'mobile'
+      ? styles.deliveryCardMobile
+      : styles.deliveryCardDesktop
+  }`;
 
   return (
-    <div className={styles.deliveryCard}>
+    <div className={containerStyles}>
       <div className={styles.promoImageContainer}>
         <img
           className={styles.promoImage}

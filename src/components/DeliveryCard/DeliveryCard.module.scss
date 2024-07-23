@@ -29,3 +29,58 @@
   }
 }
 
+.deliveryCardMobile {
+  .promoImageContainer {
+    position: absolute;
+    left: 0;
+    right: 0;
+
+    img {
+      width: 53px;
+      height: 53px;
+    }
+  }
+
+  .userActions {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .promoStickerContainer {
+    position: absolute;
+    right: 0;
+    bottom: -20px;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transform: rotate(-4.5deg);
+  }
+}
+
+.deliveryCardDesktop {
+  h2, p {
+    text-align: left;
+  }
+
+  .userActions {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .promoStickerContainer {
+    position: absolute;
+    right: -20px;
+    top: -20px;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    transform: rotate(10.8deg);
+  }
+}
